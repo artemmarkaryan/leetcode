@@ -1,32 +1,17 @@
+// https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+
 package main
 
-import "fmt"
-
-func removeDuplicates(nums []int) int {
-	i := 0
-	for {
-		if i == len(nums)-1 {
-			break
-		}
-
-		if nums[i+1] > nums[i] {
+func removeDuplicates(n []int) int {
+	i := 1
+	prev := n[0]
+	for j := 1; j < len(n); j++ {
+		if n[j] > prev {
+			n[i] = n[j]
 			i++
-			continue
 		}
-
-		// nums[i+1] == nums[i]
-		for j := i + i; j < len(nums); j++ {
-			if nums[j] > nums[i] {
-				nums[i+1], nums[j] = nums[j], nums[i+1]
-				break
-			}
-		}
-
-		i++
+		prev = n[j]
 	}
 
-	fmt.Println(nums)
-	fmt.Println(i + 1)
-
-	return i + 1
+	return i
 }

@@ -9,7 +9,17 @@ func Test_removeDuplicates(t *testing.T) {
 		want2 []int
 	}{
 		{
+			nums:  []int{1, 1, 1, 2, 2, 2, 3, 3},
+			want:  3,
+			want2: []int{1, 2, 3},
+		},
+		{
 			nums:  []int{1, 2, 3, 3},
+			want:  3,
+			want2: []int{1, 2, 3},
+		},
+		{
+			nums:  []int{1, 2, 2, 2, 3, 3},
 			want:  3,
 			want2: []int{1, 2, 3},
 		},
@@ -20,7 +30,6 @@ func Test_removeDuplicates(t *testing.T) {
 
 			if got != tt.want {
 				t.Errorf("removeDuplicates() = %v, want %v", got, tt.want)
-				t.FailNow()
 			}
 
 			for i := 0; i < got; i++ {
